@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Environment variables (contains secrets - never commit these)
+.env
+
+# Build output
+dist/
+build/
+
+# Locally-stored recording uploads (not meant to be committed)
+backend/uploads/
+
+# OS/editor junk
+.DS_Store
+*.log
