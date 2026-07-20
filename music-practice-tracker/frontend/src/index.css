@@ -692,14 +692,19 @@ input, textarea, select {
 @media (max-width: 900px) {
   .sidebar {
     position: fixed;
-    left: -260px;
+    left: 0;
     top: 0;
+    margin: 0;
+    height: 100vh;
+    border-radius: 0 26px 26px 0;
+    width: 250px;
+    transform: translateX(-110%);
     z-index: 100;
-    transition: left 0.25s ease;
+    transition: transform 0.25s ease;
     box-shadow: var(--shadow-lg);
   }
   .sidebar.open {
-    left: 0;
+    transform: translateX(0);
   }
   .mobile-topbar {
     display: flex;
