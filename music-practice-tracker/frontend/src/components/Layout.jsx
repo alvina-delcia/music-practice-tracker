@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import FloatingNotes from "./FloatingNotes";
+import ChatWidget from "./ChatWidget";
 
 const navItems = [
   { to: "/dashboard", label: "Dashboard", icon: "◈" },
@@ -9,10 +11,12 @@ const navItems = [
   { to: "/recordings", label: "Recordings", icon: "🎙" },
   { to: "/calendar", label: "Calendar", icon: "▦" },
   { to: "/goals", label: "Goal", icon: "◔" },
+  { to: "/coach", label: "Coach", icon: "💬" },
 ];
 
 const Layout = ({ children }) => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const initials = user?.name
@@ -55,8 +59,23 @@ const Layout = ({ children }) => {
 
         <div className="sidebar-brand">
           <div className="sidebar-brand-mark" />
-          <span className="sidebar-brand-name">Cadence</span>
+          <div>
+            <div className="sidebar-brand-name">Cadence</div>
+            <div className="sidebar-tagline">Practice. Progress. Play.</div>
+          </div>
         </div>
+
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          <span className={`theme-toggle-icon ${theme === "light" ? "active" : ""}`}>☀</span>
+          <span className={`theme-toggle-track ${theme === "dark" ? "dark" : ""}`}>
+            <span className="theme-toggle-thumb" />
+          </span>
+          <span className={`theme-toggle-icon ${theme === "dark" ? "active" : ""}`}>☾</span>
+        </button>
 
         <nav className="sidebar-nav">
           {navItems.map((item) => (
@@ -94,6 +113,7 @@ const Layout = ({ children }) => {
       </aside>
 
       <main className="main-content">{children}</main>
+      <ChatWidget />
     </div>
   );
 };

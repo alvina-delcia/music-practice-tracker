@@ -8,6 +8,8 @@ import authRoutes from "./routes/authRoutes.js";
 import sessionRoutes from "./routes/sessionRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import recordingRoutes from "./routes/recordingRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -31,6 +33,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/sessions", sessionRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/recordings", recordingRoutes);
+app.use("/api/chat", chatRoutes);
+
 
 // Health check
 app.get("/api/health", (req, res) => {
