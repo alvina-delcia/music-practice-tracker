@@ -6,6 +6,7 @@ import Sessions from "./pages/Sessions";
 import Calendar from "./pages/Calendar";
 import Goals from "./pages/Goals";
 import Recordings from "./pages/Recordings";
+import Coach from "./pages/Coach";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -27,6 +28,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Sessions />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coach"
+        element={
+          <ProtectedRoute>
+            <Coach />
           </ProtectedRoute>
         }
       />

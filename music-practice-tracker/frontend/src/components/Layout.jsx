@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import FloatingNotes from "./FloatingNotes";
-import ChatWidget from "./ChatWidget";
 
 const navItems = [
   { to: "/dashboard", label: "Dashboard", icon: "◈" },
@@ -113,7 +112,6 @@ const Layout = ({ children }) => {
       </aside>
 
       <main className="main-content">{children}</main>
-      <ChatWidget />
     </div>
   );
 };
